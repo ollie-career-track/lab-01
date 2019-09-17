@@ -1,8 +1,8 @@
-# LAB - 
+# LAB - 01
 
-## Project Name
+## Node Ecosystem
 
-### Author: Student/Group Name
+### Author: Ollie Comet
 
 ### Links and Resources
 * [submission PR](http://xyz.com)
