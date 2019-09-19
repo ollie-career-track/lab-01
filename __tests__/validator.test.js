@@ -1,6 +1,6 @@
 const validator = require('../lib/validator.js');
 
-describe('validator module', () => {
+describe.skip('validator module', () => {
   
   const str = 'yes';
   const num = 1;
@@ -9,7 +9,7 @@ describe('validator module', () => {
   const func = () => {};
   const bool = false;
 
-  describe.skip('performs basic validation of', () => {
+  describe('performs basic validation of', () => {
 
     it('strings', () => {
       expect(validator.isString(str)).toBeTruthy();
@@ -66,7 +66,7 @@ describe('validator module', () => {
     });
   });
 
-  describe.skip('performs array validation of', () => {
+  describe('performs array validation of', () => {
 
     const arrayOfStrings = ['a', 'b', 'c'];
     const arrayOfNumbers = [1, 2, 3];
@@ -102,7 +102,7 @@ describe('validator module', () => {
     });
   });
 
-  describe.skip('get validator for', () => {
+  describe('get validator for', () => {
 
     it('strings', () => {
       // TODO: pass getValidator the rules
@@ -144,44 +144,5 @@ describe('validator module', () => {
     it('array of booleans', () => {
       expect(validator.getValidator('arrayOfBooleans')).toBe(validator.isArrayOfBooleans);  
     });
-  });
-  
-  // what do i need to test?
-
-  describe('Schema class', () => {
-    // test schemalaws object with required fields
-    // create new schema class taking in the schemalaws obj
-
-    // it validates a correct model if no extra fields... schema.validate();
-    // it removes extra fields
-  });
-
-  describe('validate method on Schema class', () => {
-    // object.entries?
-    // array.every?
-    // uses getCastor
-
-    // calls correct castor for each schema field
-    // stores returned value to new object
-    // returns the object
-  });
-
-  describe('castor functions', () => {
-    // castor methods
-      // string castor 
-      // boolean castor
-      // number castor
-      // date castor
-
-    // what are these castors taking?
-      // they implement the is type functions
-      // they take an input that is the value on the key of the object
-      // an error message
-
-    // mostly testing return values 
-    // what are the castors returning?
-      // the type if correct type
-      // a coerced type if can be coerced
-      // an error if can't be coerced
   });
 });
