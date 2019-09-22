@@ -147,7 +147,7 @@ describe('validator module', () => {
   });
 
   describe('performs casting to', () => {
-    describe.skip('strings', () => {
+    describe('strings', () => {
       it('returns strings', () => {
         expect(validator.stringCastor(str)).toBe(str);
       });
@@ -209,7 +209,7 @@ describe('validator module', () => {
       });
     });
     
-    describe.skip('booleans', () => {
+    describe('booleans', () => {
       const validStr = 'true';
       const invalidNumber = 88;
 
