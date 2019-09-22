@@ -145,4 +145,109 @@ describe('validator module', () => {
       expect(validator.getValidator('arrayOfBooleans')).toBe(validator.isArrayOfBooleans);  
     });
   });
+
+  describe('performs casting to', () => {
+    describe('strings', () => {
+      it('returns strings', () => {
+        expect(validator.stringCastor(str)).toBe(str);
+      });
+
+      it('coerces numbers to strings', () => {
+        expect(validator.stringCastor(num)).toBe('1');
+      });
+
+      it('coerces booleans to strings', () => {
+        expect(validator.stringCastor(bool)).toBe('false');
+      });
+
+      it('throws error for objects', () => {
+        expect(() => {
+          validator.stringCastor(obj);
+        }).toThrow(validator.typeError);
+      });
+      
+      it('throws error for arrays', () => {
+        expect(() => {
+          validator.stringCastor(arr);
+        }).toThrow(validator.typeError);
+      });
+    });
+    
+    describe.skip('numbers', () => {
+      const validStr = '8';
+
+      it('returns numbers', () => {
+        expect(validator.numberCastor(num)).toBe(num);
+      });
+
+      it('coerces valid strings to numbers', () => {
+        expect(validator.numberCastor(validStr)).toBe(8);
+      });
+      
+      it('throws error for invalid strings', () => {
+        expect(() => {
+          validator.numberCastor(str);
+        }).toThrow(validator.typeError);
+      });
+      
+      it('throws error for booleans', () => {
+        expect(() => {
+          validator.numberCastor(bool);
+        }).toThrow(validator.typeError);
+      });
+      
+      it('throws error for objects', () => {
+        expect(() => {
+          validator.numberCastor(obj);
+        }).toThrow(validator.typeError);
+      });
+      
+      it('throws error for arrays', () => {
+        expect(() => {
+          validator.numberCastor(arr);
+        }).toThrow(validator.typeError);
+      });
+    });
+    
+    describe.skip('booleans', () => {
+      const validStr = 'true';
+      const invalidNumber = 88;
+
+      it('returns booleans', () => {
+        expect(validator.booleanCastor(bool)).toBe(bool);
+      });
+      
+      it('coerces valid strings to booleans', () => {
+        expect(validator.booleanCastor(validStr)).toBe(true);
+      });
+      
+      it('throws error for invalid strings', () => {
+        expect(() => {
+          validator.booleanCastor(str);
+        }).toThrow(validator.typeError);
+      });
+      
+      it('coerces valid numbers to booleans', () => {
+        expect(validator.booleanCastor(num)).toBe(true);
+      });
+      
+      it('throws error for invalid numbers', () => {
+        expect(() => {
+          validator.booleanCastor(invalidNumber);
+        }).toThrow(validator.typeError);
+      });
+      
+      it('throws error for objects', () => {
+        expect(() => {
+          validator.booleanCastor(obj);
+        }).toThrow(validator.typeError);
+      });
+      
+      it('throws error for arrays', () => {
+        expect(() => {
+          validator.booleanCastor(arr);
+        }).toThrow(validator.typeError);
+      }); 
+    });
+  });
 });
